@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +16,10 @@ public class btnMenu : MonoBehaviour
     private GameObject menuMain;
     [SerializeField]
     private GameObject menuLevel;
+    [SerializeField]
+    private GameObject Maplv1;
+    [SerializeField]
+    private Button btnMapLV1;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,13 @@ public class btnMenu : MonoBehaviour
 
     }
     //--------------------------------------------------------------------------------------------------
+
+    void AddListener()
+    {
+        //btnMapLV1.onClick.AddListener();
+        startButton.onClick.AddListener(ClickStart);
+        endButton.onClick.AddListener(ClickEnd);
+    }
     void HideScreen(GameObject go)
     {
         if (go != null)
@@ -45,10 +56,15 @@ public class btnMenu : MonoBehaviour
             go.SetActive(true);
         }
     }
-    void AddListener()
+
+    void ClickStartLV(int lv)
     {
-        startButton.onClick.AddListener(ClickStart);
-        endButton.onClick.AddListener(ClickEnd);
+        HideScreen(menuLevel);
+        if (lv == 1)
+        {
+            DisplayScreen(Maplv1);
+        }
+
     }
 
     void ClickStart()
